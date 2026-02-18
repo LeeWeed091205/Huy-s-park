@@ -55,6 +55,8 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.75;
 document.body.appendChild(renderer.domElement);
 
+
+//init character
 let character = {
     instance : null,
     distance : 5,
@@ -91,6 +93,8 @@ const Loop = ()=>{
 Loop();
 
 
+
+//init for RayCaster
 const intersectObjectNames = ['Character','Project1','Project2','Project3'];
 const intersectObjects = [];
 const collidableObjects = [];
@@ -136,11 +140,13 @@ loader.load('./prj2_final_model.glb',(glb)=>{
 const rayCaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
+//mouse movement
 function onPointermove(event){
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 }
 
+// continuous rendering
 function render(){
     rayCaster.setFromCamera(mouse,camera);
     const intersects = rayCaster.intersectObjects(intersectObjects);
@@ -163,6 +169,7 @@ function render(){
 }
 render();
 
+//event added
 window.addEventListener('pointermove',onPointermove);
 window.addEventListener('click',()=>{
     console.log(intersectObject);
@@ -178,10 +185,12 @@ window.addEventListener('click',()=>{
     }
 })
 
+
+
 function movingCharacter(targetPosition, targetRotation){
     character.isMoving = true;
     
-    // TÍNH TOÁN QUÃNG ĐƯỜNG DI CHUYỂN
+    // Caculate movement
     // Lấy đích đến trừ đi vị trí hiện tại để biết nhân vật vừa bước đi bao xa
     const deltaX = targetPosition.x - character.instance.position.x;
     const deltaZ = targetPosition.z - character.instance.position.z;
@@ -192,12 +201,12 @@ function movingCharacter(targetPosition, targetRotation){
         }
     });
 
-    // --- 1. ANIMATION CỦA NHÂN VẬT (Code cũ của bạn) ---
+    // smooth animation movement - character
     t1.to(character.instance.position,{
         x : targetPosition.x,
         z : targetPosition.z,
         duration : character.moveDuration,
-    }, 0) // Số 0 ở cuối nghĩa là: Bắt đầu ngay lập tức ở giây thứ 0
+    }, 0) // the last 0 mean no delay between action
 
     t1.to(character.instance.rotation,{
         y : targetRotation,
@@ -215,18 +224,18 @@ function movingCharacter(targetPosition, targetRotation){
     }, character.moveDuration / 2)
 
 
-    // --- 2. ANIMATION CỦA CAMERA (Thêm mới) ---
-    // Cộng thêm quãng đường nhân vật vừa đi vào vị trí Camera hiện tại
+    // smooth animation movement - camera
     t1.to(camera.position, {
         x: camera.position.x + deltaX,
         z: camera.position.z + deltaZ,
         duration: character.moveDuration,
-        ease: "power1.inOut" // Thêm chút ease cho camera trượt êm hơn
+        ease: "power1.inOut" 
     }, 0); 
 
 
 }
 
+// add event for keydown
 window.addEventListener('keydown',(event)=>{
     if (character.isMoving) return;
     console.log(event.key);
@@ -413,3 +422,4 @@ Object.keys(directions).forEach((dir)=>{
         moveMent(chaPosition,rot);
     })
 })
+
