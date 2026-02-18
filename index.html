@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huy's first park</title>
+    <link rel="icon" type="image/png" href="park.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@v0.149.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.149.0/examples/jsm/"
+      }
+    }
+    
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+</head>
+<body>
+    <canvas id="canvas">
+
+    </canvas>
+    <div class="loading-screen">
+      <div class="loading-wrapper">
+        <p class="loading-text">Loading...</p>
+        <div class="animation-wrapper">
+          <div class="up-sec">
+            <div style="--bg-color:#b1f970; --time-delay:0s"></div>
+            <div style ="--bg-color:#87b442;--time-delay:0.2s"></div>
+            <div style ="--bg-color:#d7e793;--time-delay:0.4s"></div>
+          </div>
+          <div class="down-sec">
+            <div style ="--bg-color:#a48a46;--time-delay:0.6s"></div>
+            <div style ="--bg-color:#711c0e;--time-delay:0.8s"></div>
+            <div style ="--bg-color:#885d11;--time-delay:1s"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal hidden">
+      <div class="header">
+        <h2>ProJect One</h2>
+        <button class="exit-btn">exit</button>
+      </div>
+      <a href="" class="link" target="_blank">View Project</a>
+      <div class="body">
+        <p class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ipsum quod suscipit aliquam doloribus odio maxime, fuga adipisci eos ab inventore, necessitatibus eum ipsa recusandae temporibus deserunt? Doloremque, quas sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, blanditiis, itaque molestiae, neque accusamus facilis consectetur commodi dolores vitae officia totam mollitia assumenda consequuntur dolore culpa odit atque vero recusandae.</p>
+      </div>
+    </div>
+
+   
+
+    <div class="dark-mode">
+      <i id = "iconMode" class="fa-regular fa-moon"></i>
+      </div>
+
+  <div class="movement-control">
+ 
+      <i id = "up" class="fa-regular fa-square-caret-up"></i>  
+
+
+      <i id = "down" class="fa-regular fa-square-caret-down"></i> 
+
+
+      <i  id = "left" class="fa-regular fa-square-caret-left"></i>
+
+
+      <i id = "right"  class="fa-regular fa-square-caret-right"></i> 
+
+  </div>
+ 
+ 
+    <script type="module" src="script.js"></script>
+</body>
+</html>
